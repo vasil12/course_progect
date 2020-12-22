@@ -1,24 +1,3 @@
-import numpy as np
-
-cards = ['A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
-         'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠',
-         'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
-         'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣']
-
-suits = ['♥', '♠', '♦', '♣']
-diction = {}
-diction['card1'] = 'A♥'
-diction['card2'] = 'A♠'
-diction['tablecard1'] = '?'
-diction['tablecard2'] = '?'
-diction['tablecard3'] = '?'
-diction['tablecard4'] = '?'
-diction['tablecard5'] = '?'
-diction['color11'] = 'red'
-diction['color12'] = 'black'
-diction['probability'] = []
-
-
 class Probability():
     def pairs(self, diction):
         combin = {}
@@ -231,26 +210,3 @@ class Probability():
             for i in range(free_pos):
                 combin['prob_all'] *= (13 - i - maxlen) / (52 - i + 1 - (5 - free_pos) + (diction['players'] - 1) * 2)
         return combin
-
-
-def colculate():
-    suits = ['♥', '♠', '♦', '♣']
-    getcard = {}
-    dealler = cards[:]
-    getcard['players'] = 2
-    getcard['card1'] = 'A♥'
-    getcard['card2'] = '2♠'
-    diction['tablecard1'] = '3♥'
-    diction['tablecard2'] = '4♥'
-    diction['tablecard3'] = '5♥'
-    diction['tablecard4'] = '5♠'
-    diction['tablecard5'] = '?'
-    for i in range(1, 6):
-        card = 'tablecard' + str(i)
-        getcard[card] = diction[card]
-    diction['probability'] = Probability().pairs(getcard)['prob_all']
-    # diction['probability'] = int(card1[0]) + 2
-    return diction['probability']
-
-
-print(colculate())
