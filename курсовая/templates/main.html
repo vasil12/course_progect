@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+</head>
+<body>
+<section class="poker-table--container" style>
+    <h2 style="color:white">course work</h2>
+    <form method="post" action="{{url_for('calculate')}}">
+        <div class="poker-table--container">
+            <div class="poker-table">
+
+                <input type="text" name="tablecard1" value="{{diction['tablecard1']}}" class="inputsize"
+                       style="color : {{diction['color1']}}">
+                <input type="text" name="tablecard2" value="{{diction['tablecard2']}}" class="inputsize"
+                       style="color : {{diction['color2']}}">
+                <input type="text" name="tablecard3" value="{{diction['tablecard3']}}" class="inputsize"
+                       style="color : {{diction['color3']}}">
+                <input type="text" name="tablecard4" value="{{diction['tablecard4']}}" class="inputsize"
+                       style="color : {{diction['color4']}}">
+                <input type="text" name="tablecard5" value="{{diction['tablecard5']}}" class="inputsize"
+                       style="color : {{diction['color5']}}">
+                <!-- <br>
+                <br> -->
+                <ul class="menu">
+                    <li><a href=# style="color:green;">card</a>
+                        <ul class="submenu">
+                            <li><a href=# style="color: red "></a>
+                                <ul>
+                                    {% for card in cards %}
+                                    {% if card[-1] in ['♠', '♣']%}
+                                    <li style="display: inline-block; left: 0;"><a
+                                            href="{{url_for('tablecard1',value=card)}}"
+                                            style="color: black">{{card}}</a></li>
+                                    {% elif card[-1] in ['♥', '♦']%}
+                                    <li style="display: inline-block;"><a href="{{url_for('tablecard1',value=card)}}"
+                                                                          style="color: red">{{card}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href=# style="color:green;">card</a>
+                        <ul class="submenu">
+                            <li><a href=# style="color: red "></a>
+                                <ul>
+                                    {% for card in cards %}
+                                    {% if card[-1] in ['♠', '♣']%}
+                                    <li style="display: inline-block; left: 0;"><a
+                                            href="{{url_for('tablecard2',value=card)}}"
+                                            style="color: black">{{card}}</a></li>
+                                    {% elif card[-1] in ['♥', '♦']%}
+                                    <li style="display: inline-block;"><a href="{{url_for('tablecard2',value=card)}}"
+                                                                          style="color: red">{{card}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href=# style="color:green;">card</a>
+                        <ul class="submenu">
+                            <li><a href=# style="color: red "></a>
+                                <ul>
+                                    {% for card in cards %}
+                                    {% if card[-1] in ['♠', '♣']%}
+                                    <li style="display: inline-block; left: 0;"><a
+                                            href="{{url_for('tablecard3',value=card)}}"
+                                            style="color: black">{{card}}</a></li>
+                                    {% elif card[-1] in ['♥', '♦']%}
+                                    <li style="display: inline-block;"><a href="{{url_for('tablecard3',value=card)}}"
+                                                                          style="color: red">{{card}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href=# style="color:green;">card</a>
+                        <ul class="submenu">
+                            <li><a href=# style="color: red "></a>
+                                <ul>
+                                    {% for card in cards %}
+                                    {% if card[-1] in ['♠', '♣']%}
+                                    <li style="display: inline-block; left: 0;"><a
+                                            href="{{url_for('tablecard4',value=card)}}"
+                                            style="color: black">{{card}}</a></li>
+                                    {% elif card[-1] in ['♥', '♦']%}
+                                    <li style="display: inline-block;"><a href="{{url_for('tablecard4',value=card)}}"
+                                                                          style="color: red">{{card}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href=# style="color:green;">card</a>
+                        <ul class="submenu">
+                            <li><a href=# style="color: red "></a>
+                                <ul>
+                                    {% for card in cards %}
+                                    {% if card[-1] in ['♠', '♣']%}
+                                    <li style="display: inline-block; left: 0;"><a
+                                            href="{{url_for('tablecard5',value=card)}}"
+                                            style="color: black">{{card}}</a></li>
+                                    {% elif card[-1] in ['♥', '♦']%}
+                                    <li style="display: inline-block;"><a href="{{url_for('tablecard5',value=card)}}"
+                                                                          style="color: red">{{card}}</a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h1 style="color: white">probability</h1>
+                <input type="submit" name="probability" value="probability" class="inputsize">
+            </div>
+            <p style="color: white"> count players<select name="players">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select></p>
+            <input type="text" name="card1" value="{{diction['card1']}}" class="inputsize "
+                   style="color : {{diction['color11']}}; left: 245px;">
+            <input type="text" name="card2" value="{{diction['card2']}}" class="inputsize"
+                   style="color : {{diction['color12']}}; left: 245px;">
+            <br>
+            <br>
+            <ul class="menu">
+                <li><a href=# style="color:green;">card</a>
+                    <ul class="submenu">
+                        <li><a href=# style="color: red "></a>
+                            <ul>
+                                {% for card in cards %}
+                                {% if card[-1] in ['♠', '♣']%}
+                                <li style="display: inline-block; left: 0;"><a
+                                        href="{{url_for('card1',value=card)}}"
+                                        style="color: black">{{card}}</a></li>
+                                {% elif card[-1] in ['♥', '♦']%}
+                                <li style="display: inline-block;"><a href="{{url_for('card1',value=card)}}"
+                                                                      style="color: red">{{card}}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href=# style="color:green;">card</a>
+                    <ul class="submenu">
+                        <li><a href=# style="color: red "></a>
+                            <ul>
+                                {% for card in cards %}
+                                {% if card[-1] in ['♠', '♣']%}
+                                <li style="display: inline-block; left: 0;"><a
+                                        href="{{url_for('card2',value=card)}}"
+                                        style="color: black">{{card}}</a></li>
+                                {% elif card[-1] in ['♥', '♦']%}
+                                <li style="display: inline-block;"><a href="{{url_for('card2',value=card)}}"
+                                                                      style="color: red">{{card}}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <p style="color: white">pairs
+            <input type="text" name="tablecard1" value="{{diction['pairs']}}" class="inputsize">
+            two pairs
+            <input type="text" name="tablecard2" value="{{diction['two_pairs']}}" class="inputsize">
+            set
+            <input type="text" name="tablecard3" value="{{diction['sets']}}" class="inputsize">
+            street
+            <input type="text" name="tablecard4" value="{{diction['street']}}" class="inputsize">
+            flash
+            <input type="text" name="tablecard5" value="{{diction['flash']}}" class="inputsize">
+        </p>
+    </form>
+</section>
+</body>
+</html>
